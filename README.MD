@@ -1,5 +1,5 @@
-API:
-
+## API:
+```
 MemLeak:init(file)           	-- init MemLeak by out file
 MemLeak:cacheMemory() 			-- cache current memory state
 MemLeak:showCache(index) 		-- show memory state
@@ -7,7 +7,9 @@ MemLeak:differCache() 			-- differ double memory cache
 
 MemLeak:fixTableDesc(object) 	-- fix this function, add your description
 MemLeak:fixUserdataDesc(object, desc) 	-- fix this function, add your description
+```
 
+## SAMPLE:
 ```
 ------------------------------------------------
 -- test
