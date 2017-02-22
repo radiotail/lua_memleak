@@ -1,10 +1,11 @@
 local pairs = pairs
 local print = print
 local type  = type
+local select = select
 local tostring = tostring
 local stringFormat = string.format
 
-MemLeak = {
+local MemLeak = {
 	memCache1 = nil,
 	memCache2 = nil,
 	nowCache  = nil,
@@ -12,8 +13,6 @@ MemLeak = {
 	parentsValue = {},
 	output	  = io.stdout,
 }
-
-local MemLeak = MemLeak
 
 function MemLeak:cacheMemory()
 	if self.memCache1 and self.memCache2 then
@@ -249,7 +248,7 @@ end
 
 function MemLeak:fixTableDesc(object)
 	local fixdesc = ""
-	-- add your own custom	
+	-- add your custom	
 	return fixdesc
 end
 
@@ -305,7 +304,7 @@ end
 
 function MemLeak:fixUserdataDesc(object, desc)
 	local fixdesc = ""
-	-- add your own custom	
+	-- add your custom	
 	return fixdesc
 end
 
@@ -342,9 +341,9 @@ end
 
 function MemLeak:prints(...)
 	local outStr = ""
-	for i = 1, arg.n do
-		local temp = arg[i] or ""
-		outStr = outStr..tostring(arg[i]).."\t"
+	for i = 1, select('#', ...) do
+		local temp = select(i, ...) or ""
+		outStr = outStr..tostring(temp).."\t"
 	end
 	outStr = outStr.."\n"
 	self.output:write(outStr)
@@ -406,6 +405,7 @@ function MemLeak:init(filename)
 	self:createOutfile(filename)
 end
 
+return MemLeak
 ------------------------------------------------
 -- test
 -- MemLeak:init([[memleak.log]]) -- init MemLeak op
