@@ -155,9 +155,13 @@ function MemLeak:findDiffersParents(differs, tb, func, user, key, value)
 		if not differs[parentKey] then
 			if not parentValue then
 				parentValue = func[parentKey]
-			elseif not parentValue then
-				parentValue = user[parentKey]
-			elseif parentValue then
+            end
+            
+            if not parentValue then
+                parentValue = user[parentKey]
+            end
+
+			if parentValue then
 				differs[parentKey] = parentValue
 				self:findDiffersParents(differs, tb, func, user, parentKey, parentValue)
 			end
